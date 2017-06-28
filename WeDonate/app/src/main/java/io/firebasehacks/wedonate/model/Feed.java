@@ -12,8 +12,8 @@ import java.util.Map;
 public class Feed {
 
     private String feedId;
-    private String feedTime;
-    private String feedPriority;
+    private long feedTime;
+    private long feedPriority;
     private String userId;
     private String userName;
     private String profilePic;
@@ -30,19 +30,19 @@ public class Feed {
         this.feedId = feedId;
     }
 
-    public String getFeedTime() {
+    public long getFeedTime() {
         return feedTime;
     }
 
-    public void setFeedTime(String feedTime) {
+    public void setFeedTime(long feedTime) {
         this.feedTime = feedTime;
     }
 
-    public String getFeedPriority() {
+    public long getFeedPriority() {
         return feedPriority;
     }
 
-    public void setFeedPriority(String feedPriority) {
+    public void setFeedPriority(long feedPriority) {
         this.feedPriority = feedPriority;
     }
 

@@ -13,6 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.firebasehacks.wedonate.Constants;
 import io.firebasehacks.wedonate.FirebaseFeedManager;
 import io.firebasehacks.wedonate.R;
 import io.firebasehacks.wedonate.model.Feed;
@@ -37,6 +38,11 @@ public class AddDonationActivity extends AppCompatActivity {
 
     public void onSubmit(View view) {
         Feed feed = new Feed();
+        Long currTime = System.currentTimeMillis();
+        feed.setFeedTime(currTime);
+        feed.setFeedPriority(-currTime);
+        feed.setFeedType(Constants.FEED_TYPE_DONATION);
+
         String item = (String) whatToDonate.getSelectedItem();
         String quantity = this.quantity.getText().toString();
 
