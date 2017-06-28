@@ -98,8 +98,8 @@ public class Feed {
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("feedId", feedId);
-        result.put("time", feedTime);
-        result.put("priority", feedPriority);
+        result.put("feedTime", feedTime);
+        result.put("feedPriority", feedPriority);
         result.put("feedType", feedType);
         result.put("userId", userId);
         result.put("userName", userName);
