@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -62,6 +63,8 @@ public class Home extends AppCompatActivity
         fab.setOnClickListener(this);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        LinearLayout navHeader = navigationView.findViewById(R.id.user_profile);
+        navHeader.setOnClickListener(this);
 
         mUserType = getIntent().getIntExtra(KEY_USER_TYPE, Constants.USER_TYPE_INDIVIDUAL);
         if (mUserType == Constants.USER_TYPE_INDIVIDUAL) {
@@ -149,6 +152,8 @@ public class Home extends AppCompatActivity
         switch (view.getId()) {
             case R.id.fab:
                 handleFab();
+                break;
+            case R.id.user_profile:
                 break;
         }
     }
