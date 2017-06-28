@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import io.firebasehacks.wedonate.profile.ProfileActivity;
 import java.lang.ref.WeakReference;
 
 import io.firebasehacks.wedonate.activity.AddDonationActivity;
@@ -133,6 +134,10 @@ public class Home extends AppCompatActivity
         break;
       case R.id.nav_my_donations:
         fetchAndLoadFeeds("mine");
+        break;
+      case R.id.nav_send:
+        Intent intent = new Intent(Home.this, ProfileActivity.class);
+        startActivity(intent);
         break;
     }
 
