@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
+
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="What are the things you would like to donate ?"
+      android:textSize="18sp"
+      android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
+
+  <CheckBox
+      android:id="@+id/r_btn_money"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Money" />
+
+  <CheckBox
+      android:id="@+id/r_button_clothes"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Clothes" />
+  <Button
+      android:id="@+id/btn_next"
+      android:layout_alignParentBottom="true"
+      android:text=" NEXT "
+      style="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+</LinearLayout>
