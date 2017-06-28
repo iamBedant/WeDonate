@@ -1,19 +1,22 @@
 package io.firebasehacks.wedonate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
-public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import io.firebasehacks.wedonate.activity.AddDonationActivity;
+
+public class Home extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener,
+        View.OnClickListener {
 
     public static final String KEY_USER_TYPE = "user_type";
     private int mUserType;
@@ -25,26 +28,19 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle =
                 new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(this);
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-        mUserType = getIntent().getIntExtra(KEY_USER_TYPE, 0);
-        if (mUserType == 0) {
+        mUserType = getIntent().getIntExtra(KEY_USER_TYPE, Constants.USER_TYPE_INDIVIDUAL);
+        if (mUserType == Constants.USER_TYPE_INDIVIDUAL) {
             navigationView.inflateMenu(R.menu.activity_home_donor_drawer);
         } else {
             navigationView.inflateMenu(R.menu.activity_home_org_drawer);
@@ -60,28 +56,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -102,5 +76,23 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fab:
+                handleFab();
+                break;
+        }
+    }
+
+    private void handleFab() {
+        if (mUserType == Constants.USER_TYPE_INDIVIDUAL) {
+            Intent intent = new Intent(this, AddDonationActivity.class);
+            startActivity(intent);
+        } else {
+
+        }
     }
 }

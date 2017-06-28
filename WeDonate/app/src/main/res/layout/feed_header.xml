@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2016. Chanse Games - All Rights Reserved.
+  ~ Unauthorized copying of this file, via any medium is strictly prohibited
+  ~ Proprietary and confidential
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true">
+
+    <io.firebasehacks.wedonate.CircleImageView
+        android:id="@+id/feed_owner_photo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        app:srcCompat="@drawable/avatar"
+        android:tint="@android:color/white"
+        app:civ_fill_color="@color/backgroundWindowColor" />
+
+    <TextView
+        android:id="@+id/feed_owner_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/feed_owner_photo"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        tools:text="Chandra Sekhar Nayak" />
+
+    <TextView
+        android:id="@+id/feed_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/feed_owner_name"
+        android:layout_toEndOf="@+id/feed_owner_photo"
+        tools:text="2 days ago"  />
+
+</RelativeLayout>

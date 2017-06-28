@@ -1,5 +1,10 @@
 package io.firebasehacks.wedonate.model;
 
+import com.google.firebase.database.Exclude;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by chansek on 28/06/17.
  */
@@ -7,11 +12,15 @@ package io.firebasehacks.wedonate.model;
 public class Feed {
 
     private String feedId;
+    private String feedTime;
+    private String feedPriority;
     private String userId;
     private String userName;
     private String profilePic;
     private int feedType;
     private String message;
+
+    private Map<String, Object> properties = new HashMap<>();
 
     public String getFeedId() {
         return feedId;
@@ -19,6 +28,22 @@ public class Feed {
 
     public void setFeedId(String feedId) {
         this.feedId = feedId;
+    }
+
+    public String getFeedTime() {
+        return feedTime;
+    }
+
+    public void setFeedTime(String feedTime) {
+        this.feedTime = feedTime;
+    }
+
+    public String getFeedPriority() {
+        return feedPriority;
+    }
+
+    public void setFeedPriority(String feedPriority) {
+        this.feedPriority = feedPriority;
     }
 
     public String getUserId() {
@@ -59,5 +84,28 @@ public class Feed {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Map<String, Object> properties) {
+        this.properties = properties;
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("feedId", feedId);
+        result.put("time", feedTime);
+        result.put("priority", feedPriority);
+        result.put("feedType", feedType);
+        result.put("userId", userId);
+        result.put("userName", userName);
+        result.put("profilePic", profilePic);
+        result.put("properties", properties);
+        result.put("message", message);
+        return result;
     }
 }
