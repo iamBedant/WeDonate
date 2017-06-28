@@ -12,6 +12,12 @@ import android.widget.Button;
 import android.support.design.widget.Snackbar;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import io.firebasehacks.wedonate.Home;
 import io.firebasehacks.wedonate.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -234,7 +240,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
               FirebaseUser user = task.getResult().getUser();
               // [START_EXCLUDE]
 
-
               updateUI(STATE_SIGNIN_SUCCESS, user);
               // [END_EXCLUDE]
             } else {
@@ -302,14 +307,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mDetailText.setText(R.string.status_verification_failed);
         break;
       case STATE_VERIFY_SUCCESS:
-        Intent intent = new Intent(LoginActivity.this, UserTypeActivity.class);
-        startActivity(intent);
+        disableViews(mStartButton, mVerifyButton, mResendButton, mPhoneNumberField,
+            mVerificationField);
+        mDetailText.setText(R.string.status_verification_succeeded);
+
+        // Set the verification text based on the credential
+        if (cred != null) {
+          if (cred.getSmsCode() != null) {
+            mVerificationField.setText(cred.getSmsCode());
+          } else {
+            mVerificationField.setText(R.string.instant_validation);
+          }
+        }
+
         break;
       case STATE_SIGNIN_FAILED:
         // No-op, handled by sign-in check
         mDetailText.setText(R.string.status_sign_in_failed);
         break;
       case STATE_SIGNIN_SUCCESS:
+        signinSuccess();
         // Np-op, handled by sign-in check
         break;
     }
@@ -333,6 +350,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
       mStatusText.setText(R.string.signed_in);
       mDetailText.setText(getString(R.string.firebase_status_fmt, user.getUid()));
     }
+  }
+
+  private void signinSuccess() {
+
+    //get user object from realtime time db
+    //if already exists
+    //go to home page
+    //if new user
+    //
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference myRef = db.getReference("users").child(mAuth.getCurrentUser().getUid());
+    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+      @Override public void onDataChange(DataSnapshot dataSnapshot) {
+        if (dataSnapshot.getValue() != null) {
+          Intent intent = new Intent(LoginActivity.this, Home.class);
+          startActivity(intent);
+        } else {
+          Intent intent = new Intent(LoginActivity.this, UserTypeActivity.class);
+          startActivity(intent);
+        }
+      }
+
+      @Override public void onCancelled(DatabaseError databaseError) {
+
+      }
+    });
   }
 
   private boolean validatePhoneNumber() {

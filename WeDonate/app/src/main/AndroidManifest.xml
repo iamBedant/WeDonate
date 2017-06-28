@@ -23,6 +23,8 @@
     </activity>
     <activity android:name=".usertype.UserTypeActivity">
     </activity>
+    <activity android:name=".profile.ProfileActivity">
+    </activity>
   </application>
 
 </manifest>

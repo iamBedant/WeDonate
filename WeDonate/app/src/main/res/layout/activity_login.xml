@@ -126,6 +126,7 @@
         android:weightSum="1.0">
 
       <Button
+          android:visibility="gone"
           android:id="@+id/sign_out_button"
           android:layout_width="0dp"
           android:layout_height="wrap_content"

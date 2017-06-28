@@ -37,6 +37,7 @@ public final class FirebaseFeedManager {
         dbRef.updateChildren(childUpdates);
     }
 
+
     public static void getFeedFromFeedId(@NonNull DatabaseReference dbRef, @NonNull String feedId,
                                          final Listener<Feed> listener) {
         dbRef.child("feeds").child(feedId)

@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import io.firebasehacks.wedonate.activity.AddDonationActivity;
+import io.firebasehacks.wedonate.profile.ProfileActivity;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -66,6 +67,8 @@ public class Home extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_all_donations:
+                    Intent intent = new Intent(Home.this, ProfileActivity.class);
+                    startActivity(intent);
                 break;
             case R.id.nav_friends_donations:
                 break;

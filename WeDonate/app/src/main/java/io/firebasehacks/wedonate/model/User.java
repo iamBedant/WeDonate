@@ -11,7 +11,32 @@ public class User {
     private String email;
     private String profilePic;
     private int userType;
-    private int userRole;
+    private String userRole;
+
+    public User(String uid,
+                String displayName,
+                String s,
+                String s1,
+                int stateOrganization,
+                int i,
+                String radiovalue) {
+
+    }
+
+    public User(
+        String userId,
+        String userName,
+        String email,
+        String profilePic,
+        int userType,
+        String userRole) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
+        this.profilePic = profilePic;
+        this.userType = userType;
+        this.userRole = userRole;
+    }
 
     public String getUserId() {
         return userId;
@@ -53,11 +78,11 @@ public class User {
         this.userType = userType;
     }
 
-    public int getUserRole() {
+    public String getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(int userRole) {
+    public void setUserRole(String userRole) {
         this.userRole = userRole;
     }
 }
