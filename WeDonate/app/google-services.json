@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "90738597009",
+    "firebase_url": "https://wedonate-b12d9.firebaseio.com",
+    "project_id": "wedonate-b12d9",
+    "storage_bucket": "wedonate-b12d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:90738597009:android:881e176c4491f90e",
+        "android_client_info": {
+          "package_name": "io.firebasehacks.wedonate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "90738597009-g6pv9pj7b8glhnrfnh3rjk1tkn9j6bsd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.firebasehacks.wedonate",
+            "certificate_hash": "68f1f36a41ed8499625e06ed4f5a3ed1f88fa4d1"
+          }
+        },
+        {
+          "client_id": "90738597009-apptcoa02955o7pp3dnrhhhq3jl7j0no.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcj-WOUZP-_MMdUYzbQmPbwS078DYIiU8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "90738597009-apptcoa02955o7pp3dnrhhhq3jl7j0no.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
